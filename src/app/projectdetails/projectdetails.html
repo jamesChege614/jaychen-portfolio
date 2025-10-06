@@ -1,0 +1,16 @@
+<!--section class="project-detail" *ngIf="project">
+  <button class="back-btn" (click)="goBack()">← Back to Projects</button>
+
+  <h2>{{ project.title }}</h2>
+  <img [src]="project.imageUrl" alt="{{ project.title }} screenshot" class="project-image" />
+  <div class="detail-description">
+    <h3>Description</h3>
+    <p>{{ project.longDescription }}</p>
+
+    <h3>Layout & Flow</h3>
+    <p>{{ project.layoutFlow }}</p>
+
+    <h3>Challenges Faced</h3>
+    <p>{{ project.challenges }}</p>
+  </div>
+</section-->
