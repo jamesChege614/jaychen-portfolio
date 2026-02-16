@@ -19,6 +19,21 @@ export class App implements OnInit{
 
   constructor(private fb: FormBuilder) {}
 
+  ngAfterViewInit(): void {
+
+    const items: NodeListOf<Element> = document.querySelectorAll('.timeline-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    items.forEach((item) => observer.observe(item));
+  }
+
   ngOnInit() {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
