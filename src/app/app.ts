@@ -1,6 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './app.css',
   standalone: true,
   imports: [
-    ReactiveFormsModule,
-    NgIf
+    ReactiveFormsModule, RouterModule
   ]
 })
 export class App implements OnInit{
