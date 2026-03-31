@@ -1,11 +1,10 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home';
-import { ProjectsComponent } from './projects/projects';
-import { Projectdetails } from './projectdetails/projectdetails';
+import { RevenuecatAgenticAiApplication } from './blog/revenuecat-agentic-ai-application/revenuecat-agentic-ai-application';
 
 export const routes: Routes = [
-  //{ path: '', component: HomeComponent },
-  //{ path: 'projects', component: ProjectsComponent },
-  //{ path: 'projects/:id', component: Projectdetails },
-  //{ path: '**', redirectTo: '' }
+
+  {
+    path: 'blog/revenuecat-agentic-ai-application',
+    component: RevenuecatAgenticAiApplication
+  }
 ];
