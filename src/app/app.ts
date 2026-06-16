@@ -1,6 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,64 +7,23 @@ import { RouterModule } from '@angular/router';
   styleUrl: './app.css',
   standalone: true,
   imports: [
-    ReactiveFormsModule, RouterModule
+    RouterModule
   ]
 })
-export class App implements OnInit{
-  //contacts form
-  contactForm!: FormGroup;
-  submitted = false;
+export class App {
+  menuOpen = false;
 
-  constructor(private fb: FormBuilder) {}
-
-  ngAfterViewInit(): void {
-
-    const items: NodeListOf<Element> = document.querySelectorAll('.timeline-item');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    items.forEach((item) => observer.observe(item));
-  }
-
-  ngOnInit() {
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      subject: [''],
-      message: ['', Validators.required]
-    });
-  }
-
-  onSubmit() {
-    if (this.contactForm.valid) {
-      // You can send the form data via email service, backend, or third-party API
-      console.log('Contact form data:', this.contactForm.value);
-      this.submitted = true;
-      this.contactForm.reset();
-      // Optionally reset touched status etc.
-    } else {
-      // Mark all as touched to show validation
-      this.contactForm.markAllAsTouched();
-    }
-  }
-    //end of contact form
-
-menuOpen = false;
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
+
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     if (event.target.innerWidth > 768 && this.menuOpen) {
       this.menuOpen = false;
     }
   }
+
   scrollTo(sectionId: string) {
     const el = document.getElementById(sectionId);
     if (el) {
@@ -74,8 +31,6 @@ menuOpen = false;
       this.menuOpen = false;
     }
   }
-
-
 }
 
 
