@@ -1,23 +1,13 @@
-import { NgIf } from '@angular/common';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
   selector: 'home-root',
   templateUrl: './home.html',
   styleUrl: './home.css',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    NgIf
-  ]
+  imports: []
 })
-export class HomeComponent implements OnInit, AfterViewInit {
-
-  contactForm!: FormGroup;
-  submitted = false;
-
-  constructor(private fb: FormBuilder) {}
+export class HomeComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
@@ -32,24 +22,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }, { threshold: 0.2 });
 
     items.forEach((item) => observer.observe(item));
-  }
-
-  ngOnInit() {
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      subject: [''],
-      message: ['', Validators.required]
-    });
-  }
-
-  onSubmit() {
-    if (this.contactForm.valid) {
-      this.submitted = true;
-      this.contactForm.reset();
-    } else {
-      this.contactForm.markAllAsTouched();
-    }
   }
 
   scrollTo(sectionId: string) {
