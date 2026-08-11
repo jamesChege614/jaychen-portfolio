@@ -471,6 +471,14 @@ button[type="submit"]:hover {
   line-height: 1.75;
 }
 
+#experience .service-card p {
+  min-height: 0;
+}
+
+#experience .service-card p:last-child {
+  margin-bottom: 0;
+}
+
 .service-card ul {
   margin: 1rem 0 0 0;
   padding-left: 1.1rem;
